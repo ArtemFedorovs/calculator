@@ -8,7 +8,7 @@ html, body {   /* Для центровки калькулятора */
     height: 100%; 
     position: relative;}  
 
-div {
+.calc__input, .calc__result, .culc__button {
     border: 1px solid black;
 }  
 
@@ -89,10 +89,12 @@ div {
     position: relative 
 }
 
-.calc__input p, .calc__result p{
+.calc__input div, .calc__result div{
     font-size: 3em;
     position: absolute;
     top: 50%;
     left: 100%;
-    transform: translate(calc(-100% - 10px), -50% )
+    transform: translate(calc(-100% - 10px), -50% );
+    width: calc(100% - 10px);
+    text-align: right;
 }
