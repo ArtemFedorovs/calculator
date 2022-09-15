@@ -190,8 +190,9 @@ function pressButton(key) {   //обработчик события нажати
     };
     if (key == "=") {
         let inputField = document.querySelector(".calc__input");
-        inputString = updateResult(true) || inputString;
-        inputField.firstElementChild.innerHTML = inputString
+        let result = updateResult(true) || inputString;
+        (result== "Infinity" || result == "-Infinity") && (result = inputString);
+        inputField.firstElementChild.innerHTML = result;
     };
     if ((!isNaN(Number(key)) && key!==" ") || key == "+"|| key == "-"|| key == "*"|| key == "/" || key == "^"|| key == "." || key == "%" || key == "(" || key == ")") {
         inputString = inputString + key; 
