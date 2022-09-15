@@ -173,28 +173,31 @@ const calculate = function (string) {
     }   
 }
 
-function pressButton(event) {
+window.addEventListener('keydown', function(event){   //функция ввода с клавиатуры
+    if (event.repeat == true && event.key !=="Backspace" && event.key !=="Delete") { return; };
+    console.log(String(event.key));
+    pressButton(String(event.key));
+});
 
-    switch (event.currentTarget.firstChild.innerHTML) {                   
-        case "DEL": 
-            inputString = inputString.substring(0, inputString.length - 1);
-            updateResult(); 
-            break;
-        case "C": 
-            inputString = "";
-            updateResult(); 
-            break;
-        case "=": 
-            let inputField = document.querySelector(".calc__input");
-            inputString = updateResult(true) || inputString;
-            inputField.firstElementChild.innerHTML = inputString
-            break; 
-        default:
-            inputString = inputString + event.currentTarget.firstChild.innerHTML; 
-            updateResult(); 
-    }
-    
+function pressButton(key) {   //обработчик события нажатие клавиш
+    if (key == "DEL" || key == "Backspace"  || key == "Delete") {
+        inputString = inputString.substring(0, inputString.length - 1);
+        updateResult(); 
+    };
+    if (key == "AC") {
+        inputString = "";
+        updateResult(); 
+    };
+    if (key == "=") {
+        let inputField = document.querySelector(".calc__input");
+        inputString = updateResult(true) || inputString;
+        inputField.firstElementChild.innerHTML = inputString
+    };
+    if ((!isNaN(Number(key)) && key!==" ") || key == "+"|| key == "-"|| key == "*"|| key == "/" || key == "^"|| key == "." || key == "%" || key == "(" || key == ")") {
+        inputString = inputString + key; 
+        updateResult(); 
+    };
 };
 
 
-module.exports =  {calculate};
+//module.exports =  {calculate};

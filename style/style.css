@@ -24,7 +24,7 @@ html, body {   /* Для центровки калькулятора */
 .calc{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     background: linear-gradient(to bottom, #f2f2f2 4%, #ebebeb 15%, #e6e6e6 77%, #e0e0e0 100%);
-    padding: 10px;
+    padding: 1.4vh;
     border-style: solid;
     border-color: #c0c0c0 #7491a5 #7491a5 #c0c0c0;
     border-width: 1px;
@@ -34,12 +34,10 @@ html, body {   /* Для центровки калькулятора */
     left: 50%;
     transform: translate(-50%, -50%);
    
-    height: 95%;
-    width: 95%;
-    max-width: 600px;
-    max-height: 1000px;
-    min-width: 40vh;
-    min-height: 70vh;
+    height: 95vh;
+    width: 60vh;
+    max-width: 95vw;
+    max-height: 152vw;
 
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -54,19 +52,22 @@ html, body {   /* Для центровки калькулятора */
     "Q R S T U"
     "V W X T U";
 
-    column-gap:  10px;
-    row-gap:  10px;
+    column-gap:  1vh;
+    row-gap:  1vh;
 }
 
 .calc__input {grid-area: A;
-    overflow: hidden;
+    overflow-y: scroll;
+}
+.calc__input::-webkit-scrollbar {
+    width: 0;
 }
 .calc__result {grid-area: B;
     overflow-x: scroll;
 }
 .calc__result::-webkit-scrollbar {
     width: 0;
-  }
+}
 .culc__button_delete {grid-area: C;}
 .culc__button_clear {grid-area: D;}
 .culc__button_open {grid-area: E;}
@@ -106,7 +107,7 @@ html, body {   /* Для центровки калькулятора */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 5vh;
+    font-size: 4.5vh;
 }
 
 .calc__input , .calc__result {
@@ -114,15 +115,14 @@ html, body {   /* Для центровки калькулятора */
 }
 
 .calc__input div, .calc__result div{
-    font-size: 5vh;
-
-    width: calc(100% - 10px);
+    font-size: 4.5vh;
     text-align: right;
     max-width: 100%;
     display: inline-block;
 }
 
 .calc__input div {
+    width: calc(100% - 10px);
     word-break: break-all;
     position: absolute;
     top: 50%;
@@ -131,6 +131,7 @@ html, body {   /* Для центровки калькулятора */
 }
 
 .calc__result div {
+    width: calc(100% );
     position: absolute;
     top: 50%;
     left: 100%;
