@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 html, body {   /* Для центровки калькулятора */
@@ -9,22 +10,36 @@ html, body {   /* Для центровки калькулятора */
     position: relative;}  
 
 .calc__input, .calc__result, .culc__button {
-    border: 1px solid black;
+    font-weight: bold;
+    border-style: solid;
+    border-color: #c0c0c0 #7491a5 #7491a5 #c0c0c0;
+    border-width: 2px;
+    background: linear-gradient(to bottom, #fff 0, #e6e6e6 100%);
+    text-shadow: 1px 1px 0 #fff;
+    color: #414f5b;
+    border-radius: 8px;
+    position: relative ;
 }  
 
 .calc{
-    border: 2px solid black;
-
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(to bottom, #f2f2f2 4%, #ebebeb 15%, #e6e6e6 77%, #e0e0e0 100%);
+    padding: 10px;
+    border-style: solid;
+    border-color: #c0c0c0 #7491a5 #7491a5 #c0c0c0;
+    border-width: 1px;
+    border-radius: 16px;
     position: absolute;  /* Для центровки калькулятора */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
    
-
-    height: 100%;
-    width: 100%;
-    max-width: 700px;
+    height: 95%;
+    width: 95%;
+    max-width: 600px;
     max-height: 1000px;
+    min-width: 40vh;
+    min-height: 70vh;
 
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -43,10 +58,15 @@ html, body {   /* Для центровки калькулятора */
     row-gap:  10px;
 }
 
-
-
-.calc__input {grid-area: A;}
-.calc__result {grid-area: B;}
+.calc__input {grid-area: A;
+    overflow: hidden;
+}
+.calc__result {grid-area: B;
+    overflow-x: scroll;
+}
+.calc__result::-webkit-scrollbar {
+    width: 0;
+  }
 .culc__button_delete {grid-area: C;}
 .culc__button_clear {grid-area: D;}
 .culc__button_open {grid-area: E;}
@@ -73,7 +93,12 @@ html, body {   /* Для центровки калькулятора */
 
 
 .culc__button {
-    position: relative 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.culc__button:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .culc__button p{
@@ -81,20 +106,33 @@ html, body {   /* Для центровки калькулятора */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 4em;
+    font-size: 5vh;
 }
 
 .calc__input , .calc__result {
     text-align: right;
-    position: relative 
 }
 
 .calc__input div, .calc__result div{
-    font-size: 3em;
+    font-size: 5vh;
+
+    width: calc(100% - 10px);
+    text-align: right;
+    max-width: 100%;
+    display: inline-block;
+}
+
+.calc__input div {
+    word-break: break-all;
     position: absolute;
     top: 50%;
     left: 100%;
     transform: translate(calc(-100% - 10px), -50% );
-    width: calc(100% - 10px);
-    text-align: right;
+}
+
+.calc__result div {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translate(calc(-100% - 10px), calc(-50% + 10px) );
 }
